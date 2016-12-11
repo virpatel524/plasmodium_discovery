@@ -18,6 +18,5 @@ Exonerate wasn't able to get proper matches, matching full AA seq to genomic seq
 So with the Genbank file uploaded and placed into the data/genbank dir, ran script rifin_var_stevor.py, which parsed those sequences and turned them into nucleotide format into the directory ASM276v1_genes, with an individual file for each type.
 
 ###2016-12-11T13:27:55
-Running meme with the following command:
-#####meme ../data/ASM276v1_genes/ASM276v1_rifin.fasta -oc ../data/meme_results/ASM276_v1_rifin_10motif -maxsize 450000 -mod zoops -nmotifs 10
+Running meme with the following command: #####meme ../data/ASM276v1_genes/ASM276v1_rifin.fasta -oc ../data/meme_results/ASM276_v1_rifin_10motif -maxsize 450000 -mod zoops -nmotifs 10
 
