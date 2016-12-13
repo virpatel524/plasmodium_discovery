@@ -29,3 +29,9 @@ Downloaded RefSeq gene seqeunces (CDS) from the following link (ftp://ftp.ncbi.n
 ###2016-12-13T14:30:51
 Looks as though this second method is much more appropriate and functions well, producing a gff that includes each gene with the motif file we want, easily parseable. So let's make a script that can parse the gff as well as the original motif meme file, thus producing the scoring metric that we'd like.
 
+###2016-12-13T15:50:57
+First concern looking at the FIMO results is that there are a ridiculous number of false positives. First filtering approach taken was to use a q-value score of 10**-30 as a cutoff. This seems to be partially effective. Will update on how much further this goes.
+
+Another question is whether there are domain duplicaions within the same transcript. This may suggest either poor filtering on the part of FIMO *or* is indicative of duplicated domains, of course. I will look at recovery rates using collapsed to further evaluate.
+
+But the ambiguity here is making me a little nervous-how do we really know which matches are significant? It might be worth doing the meme approach on protein sequences and seeing whether this produces a better outcome. I'll go ahead and get this running. 
