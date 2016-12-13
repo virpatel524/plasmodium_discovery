@@ -21,3 +21,11 @@ So with the Genbank file uploaded and placed into the data/genbank dir, ran scri
 Running meme with the following command:
 #####meme ../data/ASM276v1_genes/ASM276v1_rifin.fasta -oc ../data/meme_results/ASM276_v1_rifin_10motif -maxsize 450000 -mod zoops -nmotifs 10
 
+###2016-12-13T14:09:49
+Running fimo search using the ASM276 rifin meme file, using the fimo_search script. Hopefully this will give us better matches without the NNNNN matches that we saw before.
+
+###2016-12-13T14:21:37
+Downloaded RefSeq gene seqeunces (CDS) from the following link (ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/002/765/GCA_000002765.1_ASM276v1), the previous search searched the entire genome, which obviosuly was an inefficent technique. However, it's worth considering if we would like to do a whole genome search as well? There are a considerable number of matches when we search the entire genome. Re-running FIMO using this sequence
+###2016-12-13T14:30:51
+Looks as though this second method is much more appropriate and functions well, producing a gff that includes each gene with the motif file we want, easily parseable. So let's make a script that can parse the gff as well as the original motif meme file, thus producing the scoring metric that we'd like.
+
