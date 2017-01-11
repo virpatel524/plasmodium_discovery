@@ -37,9 +37,8 @@ for alpha in fimofle:
     genename = alpha[0]
     num = alpha[-1].split(';')[0].split('=')[-1]
     pvalue = float(alpha[-1].split(';')[3].split('=')[-1])
-    if pvalue < 10.0**(-30):
+    if pvalue < 10.0**(-8):
         gene2motifs.setdefault(genename, []).append(num)
 
-
 for alpha in gene2motifs:
-    print len(gene2motifs[alpha]),  alpha
+    print alpha

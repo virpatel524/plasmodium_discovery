@@ -34,4 +34,12 @@ First concern looking at the FIMO results is that there are a ridiculous number 
 
 Another question is whether there are domain duplicaions within the same transcript. This may suggest either poor filtering on the part of FIMO *or* is indicative of duplicated domains, of course. I will look at recovery rates using collapsed to further evaluate.
 
-But the ambiguity here is making me a little nervous-how do we really know which matches are significant? It might be worth doing the meme approach on protein sequences and seeing whether this produces a better outcome. I'll go ahead and get this running. 
+But the ambiguity here is making me a little nervous-how do we really know which matches are significant? It might be worth doing the meme approach on protein sequences and seeing whether this produces a better outcome. I'll go ahead and get this running.
+
+###2016-12-13T16:56:43
+Looking at the algorithm when we only use AAs in rifin, we get 175 matches using a pvalue cutoff of 10^-8. The next obvious test is to see if we recaptured all previous annotations using this approach. A scoring metric might also be in order for implementation, but given that we're seeing such high fidelity already, I don't think it will be necessary.
+
+###2016-12-26T13:53:32
+Read the paper describing additions to the P. vivax reference (1. Auburn,S., Böhme,U., Steinbiss,S., Trimarsanto,H., Hostetler,J., Sanders,M., Gao,Q., Nosten,F., Newbold,C.I., Berriman,M., et al. (2016) A new Plasmodium vivax reference sequence with improved assembly of the subtelomeres reveals an abundance of pir genes. Wellcome Open Res, 1, 4–9.)
+
+I think it's very clear that there's a lot we can do with this new information. First, there's still no clear picture behind the evolutionary background of the pir genes, which could add to our understanding of the function of these genes. For instance, why are they subdivided into clusters? Does each cluster serve a unique functional purpose? Second, how does the evolutionary history of P vivax compare to Falc? If the evolutionary background of their pir genes, for instance, bears similarity, then it might suggest a  similar functional use for both. 
