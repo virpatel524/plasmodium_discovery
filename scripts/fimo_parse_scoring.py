@@ -9,6 +9,7 @@ parser.add_argument('-memefile')
 parser.add_argument('-fimofile')
 parser.add_argument('-genbank')
 parser.add_argument('-genebank_name')
+parser.add_argument('-output_name')
 args = parser.parse_args()
 args = vars(args)
 
@@ -16,6 +17,7 @@ memefle = list(csv.reader(open(args['memefile']), delimiter='\t'))
 fimofle = list(csv.reader(open(args['fimofile']), delimiter='\t'))
 genbank =  args['genbank']
 gbname = args['genebank_name']
+outputname = args['output_name']
 totalmotifnum = 0
 motif2num = {}
 
@@ -54,9 +56,16 @@ for seq_record in SeqIO.parse(genbank, 'genbank'):
     for zeta  in seq_record.features:
         if zeta.type  == 'CDS':
             if 'protein_id' in zeta.qualifiers:
-                output.write('> {}\n'.format(zeta.qualifiers['protein_id'][0]))
+                output.write('>{}\n'.format(zeta.qualifiers['protein_id'][0]))
                 output.write('{}\n'.format(zeta.qualifiers['translation'][0]))
 
+output.close()
+output = open('../data/fimo_meme_searchoutput/{}.txt'.format(outputname), 'w')
+
+
+for alpha in gene2motifs:
+    output.write('{}\t'.format(alpha))
+    output.write('\t'.join(gene2motifs[alpha]) + '\n')
 
 
 

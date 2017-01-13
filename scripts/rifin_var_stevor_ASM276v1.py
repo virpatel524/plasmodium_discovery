@@ -19,37 +19,62 @@ allrecs = list(SeqIO.parse(
 
 for data in allrecs:
     for alpha in data.features:
+        if alpha.type != 'CDS': continue
         tmp = alpha.qualifiers
         if 'product' in tmp:
             if 'rifin' in tmp['product'][0]:
                 sequence = alpha.extract(data.seq)
                 seqob = sequence
-                output_fle_rif.write(
-                    '>%s\n' % (tmp['locus_tag'][0]))
-                output_fle_rif_protein.write(
-                    '>%s\n' % (tmp['locus_tag'][0]))
-                output_fle_rif.write('%s\n' % (sequence))
-                output_fle_rif_protein.write('%s\n' % (seqob.translate()))
+                if 'pseudo' in tmp:
+                    output_fle_rif.write(
+                        '>%s\n' % (tmp['locus_tag'][0]))
+                    output_fle_rif_protein.write(
+                        '>%s\n' % (tmp['locus_tag'][0]))
+                    output_fle_rif.write('%s\n' % (sequence))
+                    output_fle_rif_protein.write('%s\n' % (seqob.translate()))
+                else:
+                    output_fle_rif.write(
+                        '>%s\n' % (tmp['protein_id'][0]))
+                    output_fle_rif_protein.write(
+                        '>%s\n' % (tmp['protein_id'][0]))
+                    output_fle_rif.write('%s\n' % (sequence))
+                    output_fle_rif_protein.write('%s\n' % (seqob.translate()))
 
             if 'var' in tmp['product'][0]:
                 sequence = alpha.extract(data.seq)
                 seqob = sequence
-                output_fle_var.write(
-                    '>%s\n' % (tmp['locus_tag'][0]))
-                output_fle_var_protein.write(
-                    '>%s\n' % (tmp['locus_tag'][0]))
-                output_fle_var.write('%s\n' % (sequence))
-                output_fle_var_protein.write('%s\n' % (seqob.translate()))
+                if 'pseudo' in tmp:
+                    output_fle_var.write(
+                        '>%s\n' % (tmp['locus_tag'][0]))
+                    output_fle_var_protein.write(
+                        '>%s\n' % (tmp['locus_tag'][0]))
+                    output_fle_var.write('%s\n' % (sequence))
+                    output_fle_var_protein.write('%s\n' % (seqob.translate()))
+                else:
+                    output_fle_var.write(
+                        '>%s\n' % (tmp['protein_id'][0]))
+                    output_fle_var_protein.write(
+                        '>%s\n' % (tmp['protein_id'][0]))
+                    output_fle_var.write('%s\n' % (sequence))
+                    output_fle_var_protein.write('%s\n' % (seqob.translate()))
 
             if 'stevor' in tmp['product'][0]:
                 sequence = alpha.extract(data.seq)
                 seqob = sequence
-                output_fle_stevor.write(
-                    '>%s\n' % (tmp['locus_tag'][0]))
-                output_fle_stevor_protein.write(
-                    '>%s\n' % (tmp['locus_tag'][0]))
-                output_fle_stevor.write('%s\n' % (sequence))
-                output_fle_stevor_protein.write('%s\n' % (seqob.translate()))
+                if 'pseudo' in tmp:
+                    output_fle_stevor.write(
+                        '>%s\n' % (tmp['locus_tag'][0]))
+                    output_fle_stevor_protein.write(
+                        '>%s\n' % (tmp['locus_tag'][0]))
+                    output_fle_stevor.write('%s\n' % (sequence))
+                    output_fle_stevor_protein.write('%s\n' % (seqob.translate()))
+                else:
+                    output_fle_stevor.write(
+                        '>%s\n' % (tmp['protein_id'][0]))
+                    output_fle_stevor_protein.write(
+                        '>%s\n' % (tmp['protein_id'][0]))
+                    output_fle_stevor.write('%s\n' % (sequence))
+                    output_fle_stevor_protein.write('%s\n' % (seqob.translate()))
 
 output_fle_rif.close()
 output_fle_stevor.close()

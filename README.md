@@ -45,5 +45,30 @@ Read the paper describing additions to the P. vivax reference (1. Auburn,S., Bö
 I think it's very clear that there's a lot we can do with this new information. First, there's still no clear picture behind the evolutionary background of the pir genes, which could add to our understanding of the function of these genes. For instance, why are they subdivided into clusters? Does each cluster serve a unique functional purpose? Second, how does the evolutionary history of P vivax compare to Falc? If the evolutionary background of their pir genes, for instance, bears similarity, then it might suggest a  similar functional use for both.
 
 ###2017-01-13T12:51:20
-Looking at the characteristics of the genes that were matched. Need to extract all genes, blast/match them to the home genome, and then determine to what extent our wanted repetoire was found
+Looking at the characteristics of the genes that were matched. Need to extract all genes, blast/match them to the home genome, and then determine to what extent our wanted repetoire was found.
 
+Genbank prteins for ASM276_v1 (with the  naming convention used)  are found here: /home/vdp5/projects/plasmodium_discovery/data/genbank. File obtained using the fimo_score script.
+
+Settings used:
+
+#####python fimo_parse_scoring.py -fimofile ../data/fimo_results/meme_falc_rifin_10motif_ASM276_v1/fimo.gff -memefile ../data/meme_results/ASM276_v1_rifin_10motif/meme.txt -genbank ../data/genbank/GCA_000002765.1_ASM276v1_genomic.gbff -genebank_name ASM276_v1
+
+Now need to figure out how condordant the matches obtained here are with those used to train. I think the might be the same, don't remmeber entirelty.
+
+Looking back, it's under the ASM276_v1_genes data folder, the rifins there. Since they are in another format, it will be necessary to go back and get them to better match the protein_ids found. Should be as simple as editing a script (rifin_var_stevor_ASM276v1 updated to reflect)
+
+The intersection of the proteins identified by the FIMO approach and the known variants is 159/161, which is pretty good. It might now make sense to characteize the outliers/complements.
+
+Majority of those not found in the other set feature the 4 domain. Notably the 4 domain is also featured in a "RIF-like gene," which supports the idea that these are accurate.
+
+Next steps: figure out how to test the ordering of the domains found through FIMO (in what order are they featured in th genome. Best idea is to use coordinates of gene in question found in the matches.
+
+Also important to verify if there are domain repeats. Should we also throw out overlapping matches?
+
+Also, without a doubt, it's important to estalbish how we'll "train" search algrorithm since a manual review of all p-values is out of the question. Right now my thoughts are:
+- Determine a statistical measure using a training set to see which p-values most likely correspond to matches
+- Use previous p-value in the case that the value obtained is a strong enough match to use for the general case, although I kinda doubt this sadly.
+
+Once these measures are complete, I'll want to look at the two that were excluded with rifin. They look truncated at first glance, which is encouraging in that our fundamental algorithm is not flawed. What would be of interest is determining why they did not show up–is it a p-value problem or are they fundamnetally different in temrs of sequence?
+
+After, I think I should capture all "matches" for var, rifin, and stevor. We can determine the best phylogeny appraoch after that (especially after detemining how we're gonna establish domain sequence). 
