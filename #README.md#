@@ -45,5 +45,8 @@ Read the paper describing additions to the P. vivax reference (1. Auburn,S., Bö
 I think it's very clear that there's a lot we can do with this new information. First, there's still no clear picture behind the evolutionary background of the pir genes, which could add to our understanding of the function of these genes. For instance, why are they subdivided into clusters? Does each cluster serve a unique functional purpose? Second, how does the evolutionary history of P vivax compare to Falc? If the evolutionary background of their pir genes, for instance, bears similarity, then it might suggest a  similar functional use for both.
 
 ###2017-01-13T12:51:20
-Looking at the characteristics of the genes that were matched. Need to extract all genes, blast/match them to the home genome, and then determine to what extent our wanted repetoire was found
+Looking at the characteristics of the genes that were matched. Need to extract all genes, blast/match them to the home genome, and then determine to what extent our wanted repetoire was found.
 
+Genbank prteins for ASM276_v1 (with the  naming convention used)  are found here: /home/vdp5/projects/plasmodium_discovery/data/genbank
+
+Now need to figure out how condordant the matches obtained here are with those used to train. I think the might be the same, don't 
