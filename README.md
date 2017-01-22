@@ -71,4 +71,14 @@ Also, without a doubt, it's important to estalbish how we'll "train" search algr
 
 Once these measures are complete, I'll want to look at the two that were excluded with rifin. They look truncated at first glance, which is encouraging in that our fundamental algorithm is not flawed. What would be of interest is determining why they did not show up–is it a p-value problem or are they fundamnetally different in temrs of sequence?
 
-After, I think I should capture all "matches" for var, rifin, and stevor. We can determine the best phylogeny appraoch after that (especially after detemining how we're gonna establish domain sequence). 
+After, I think I should capture all "matches" for var, rifin, and stevor. We can determine the best phylogeny appraoch after that (especially after detemining how we're gonna establish domain sequence).
+###2017-01-19T10:22:09
+Running pipeline again using stevors. Using ASM276v1_stevor.fasta 
+
+Used settings usig fimo_parse_scoring.py -memefile ../data/meme_results/ASM276v1_stevor_10motif/meme.txt -fimofile ../data/fimo_results/meme_falc_stevor_10motif/fimo.gff -genbank ../data/genbank/
+ASM276_v1_proteins_by_protid.fasta     GCA_000002765.1_ASM276v1_genomic.gbff
+bash-4.2$ python fimo_parse_scoring.py -memefile ../data/meme_results/ASM276v1_stevor_10motif/meme.txt -fimofile ../data/fimo_results/meme_falc_stevor_10motif/fimo.gff -genbank ../data/genbank/GCA_000002765.1_ASM276v1_genomic.gbff -output_name ASM276v1_stevor
+
+Had match rate of 27/34, which is interesting. Possible that many undiscovered were truncated.
+
+Working now to combine pipeline into one script, discovery_script_general.py
