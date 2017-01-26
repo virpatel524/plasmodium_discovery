@@ -82,3 +82,22 @@ bash-4.2$ python fimo_parse_scoring.py -memefile ../data/meme_results/ASM276v1_s
 Had match rate of 27/34, which is interesting. Possible that many undiscovered were truncated.
 
 Working now to combine pipeline into one script, discovery_script_general.py
+
+###2017-01-26T11:27:49
+In rifin, we found that our analysis toolkit discovered several "novel" sequences containing domain 4. Looking at the original meme analysis, domain 4 looks to be a signal peptide, with variable inclusion in the rifin proteins that were annotated. 154 rifins were found to have domain 4 out of 161, which suggests that it is a highly critical motif.
+
+I'm going to plug in a protein with domain 4 into SignalP and verify that it predicts the beginning as a signal peptide (CAG25178.1 as first test). It does whne using sensitive settings, and it's very clear. Figure titled CAG25178.1_signalP.png.
+
+Now I'm checking protein CAG25130.1, which does not appear to have domain 4. Figure is located CAG25130.1_SignalP, and it shows that there is no signal peptide. So this shows that the signal peptide for this class of proteins is fairly conserved.
+
+Now let's look at the composition of the proteins that matched the domain 4 requirement. How close are their domain 4s to those of the others? Are they, for instance, also signal peptides? Do they ahve other blast matches?
+
+###2017-01-26T13:16:54
+Here is my general understanding so far:
+
+With the rifin algorithm, we found about 6 or 7 (need to look at number again) stevors included based on their signal sequences. Now since both are surface variant antigens, you'd obviously expect there to be signal sequences. What's interesting, however, is that signal sequences of protens undergoing co-antagonistic selection have undergo high rates of evolution.
+
+So my first thought is, well, isn't the point of signal sequences to direct these proteins to the ER. Why might it matter how variable they are? And it turns out that signal peptides dictate the efficiency of translocation, which could have significant downstream effects in terms of function.
+
+And we see that there is only ONE stevor identified which is actually in the rifin category. So to me this suggests that signal peptide evolution has led to the divergence of the two since we have been able to identify intermediates in that region.
+

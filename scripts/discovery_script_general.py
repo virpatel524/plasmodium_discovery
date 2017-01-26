@@ -20,15 +20,17 @@ genbank =  args['genbank']
 # gbname = args['genebank_name']
 
 memecommand = 'meme {} -oc ../data/meme_results/{}_meme -maxsize 450000 -mod zoops -nmotifs 10 -p 4'.format(protfile, finname )
-com = Popen(memecommand.split(' '), shell=True, stdout=subprocess.PIPE)
+print memecommand
+com = Popen(memecommand, shell=True, stdout=subprocess.PIPE)
+com.wait()
+print 'vir'
+
+fimocommand = 'fimo -oc {} {} {}'.format('../data/fimo_results/{}_fimo'.format(finname),'../data/meme_results/{}_meme/meme.txt'.format(finname), searchset)
+com = Popen(fimocommand, shell=True, stdout=subprocess.PIPE)
 com.wait()
 
-fimocommand = 'fimo -oc {} {} {}'.format('../data/fimo_results/{}_fimo'.format(finname),'../data/meme_results/{}_meme/meme.txt', searchset)
-com = Popen(fimocommand.split(' '), shell=True, stdout=subprocess.PIPE)
-com.wait()
-
-memefle = list(csv.reader(open('../data/meme_results/{}_meme/meme.txt'), delimiter='\t'))
-fimofle = list(csv.reader(open('../data/fimo_results/{}_fimo/fimo.gff'), delimiter='\t'))
+memefle = list(csv.reader(open('../data/meme_results/{}_meme/meme.txt'.format(finname)), delimiter='\t'))
+fimofle = list(csv.reader(open('../data/fimo_results/{}_fimo/fimo.gff'.format(finname)), delimiter='\t'))
 totalmotifnum = 0
 motif2num = {}
 
@@ -80,7 +82,7 @@ for alpha in gene2motifs:
     output.write('\t'.join(gene2motifs[alpha]) + '\n')
 
 infile = list(csv.reader(open('../data/fimo_meme_searchoutput/{}.txt'.format(finname)),delimiter='\t'))
-compfile = list(csv.reader(open(protfile)),delimiter='\t')
+compfile = list(csv.reader(open(protfile),delimiter='\t'))
 
 
 inval2domain = {}
